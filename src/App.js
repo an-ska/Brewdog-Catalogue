@@ -1,10 +1,10 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import styles from './App.scss';
-import BrewdogCatalogue from './containers/BrewdogCatalogue';
+import BeersList from './containers/BeersList';
 
 const App = () => (
-  <BrewdogCatalogue />
+  <BeersList />
 );
 
 export default hot(module)(App);
