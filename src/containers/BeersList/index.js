@@ -1,13 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import './BeersList.scss';
 import Beer from '../../components/Beer';
+import Button from '../../components/Button';
 
 class BeersList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      beers: []
+      beers: [],
+      currentPage: 1,
+      numberOfNewlyAddedBeers: 10
     }
   }
 
@@ -16,7 +19,8 @@ class BeersList extends Component {
   }
 
   getBeers() {
-    const apiUrl = 'https://api.punkapi.com/v2/beers?page=1&per_page=10';
+    const apiUrl = `https://api.punkapi.com/v2/beers?page=${this.state.currentPage}&per_page=10`;
+
     fetch(apiUrl)
       .then(response => response.json())
       .then(beers => {
@@ -38,6 +42,14 @@ class BeersList extends Component {
           })
         })
       })
+
+    this.setState({
+      currentPage: this.state.currentPage + 1,
+    })
+  }
+
+  loadMoreResults = () => {
+    this.getBeers()
   }
 
   render() {
@@ -59,6 +71,7 @@ class BeersList extends Component {
             )
           })}
         </ul>
+        <Button loadMoreResults={this.loadMoreResults}/>
       </Fragment>
     )
   }
