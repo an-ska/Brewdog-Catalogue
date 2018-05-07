@@ -9,8 +9,7 @@ class BeersList extends Component {
 
     this.state = {
       beers: [],
-      currentPage: 1,
-      numberOfNewlyAddedBeers: 10
+      currentPage: 1
     }
   }
 
