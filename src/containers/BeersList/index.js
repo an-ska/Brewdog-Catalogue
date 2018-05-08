@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import './BeersList.scss';
 import Beer from '../../components/Beer';
+import Alert from '../../components/Alert';
 import Loader from '../../components/Loader';
 import Button from '../../components/Button';
-
 
 class BeersList extends Component {
   constructor(props) {
@@ -12,7 +12,8 @@ class BeersList extends Component {
     this.state = {
       beers: [],
       isLoading: false,
-      currentPage: 1,
+      hasError: false,
+      pageToDisplay: 1,
       numberOfNewlyFetchedBeers: 0
     }
   }
@@ -22,7 +23,7 @@ class BeersList extends Component {
   }
 
   getBeers() {
-    const apiUrl = `https://api.punkapi.com/v2/beers?page=${this.state.currentPage}&per_page=10`;
+    const apiUrl = `https://api.punkapi.com/v2/berereers?page=${this.state.pageToDisplay}&per_page=10`;
 
     this.setState({
       isLoading: true
@@ -55,8 +56,15 @@ class BeersList extends Component {
         })
       })
 
+      .catch(e => {
+        this.setState({
+          hasError: true,
+          isLoading: false,
+        });
+      })
+
     this.setState({
-      currentPage: this.state.currentPage + 1,
+      pageToDisplay: this.state.pageToDisplay+ 1,
     })
   }
 
@@ -69,7 +77,15 @@ class BeersList extends Component {
       <Fragment>
         <h1>Brewdog Catalogue</h1>
         {
-          this.state.isLoading && <Loader/>
+          this.state.hasError
+          &&
+          <Alert
+            icon='fa-exclamation-circle'
+            text='Results cannot be shown'
+          />
+        }
+        {
+          this.state.isLoading && <Loader />
         }
         <ul>
           {this.state.beers.map((beer) => {
@@ -87,8 +103,7 @@ class BeersList extends Component {
           })}
         </ul>
         {
-          this.state.numberOfNewlyFetchedBeers === 10 &&
-          <Button loadMoreResults={this.loadMoreResults}/>
+          this.state.numberOfNewlyFetchedBeers === 10 && <Button loadMoreResults={this.loadMoreResults} />
         }
       </Fragment>
     )
