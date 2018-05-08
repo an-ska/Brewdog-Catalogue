@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import './BeersList.scss';
 import Beer from '../../components/Beer';
+import Loader from '../../components/Loader';
 import Button from '../../components/Button';
+
 
 class BeersList extends Component {
   constructor(props) {
@@ -9,6 +11,7 @@ class BeersList extends Component {
 
     this.state = {
       beers: [],
+      isLoading: false,
       currentPage: 1,
       numberOfNewlyFetchedBeers: 0
     }
@@ -20,6 +23,10 @@ class BeersList extends Component {
 
   getBeers() {
     const apiUrl = `https://api.punkapi.com/v2/beers?page=${this.state.currentPage}&per_page=10`;
+
+    this.setState({
+      isLoading: true
+    })
 
     fetch(apiUrl)
       .then(response => response.json())
@@ -38,9 +45,11 @@ class BeersList extends Component {
             beers: [
               ...this.state.beers,
               beerDetails
-            ]
+            ],
+            isLoading: false
           })
         })
+
         this.setState({
           numberOfNewlyFetchedBeers: beers.length
         })
@@ -59,6 +68,9 @@ class BeersList extends Component {
     return (
       <Fragment>
         <h1>Brewdog Catalogue</h1>
+        {
+          this.state.isLoading && <Loader/>
+        }
         <ul>
           {this.state.beers.map((beer) => {
             return (
