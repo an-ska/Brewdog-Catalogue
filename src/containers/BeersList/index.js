@@ -9,7 +9,8 @@ class BeersList extends Component {
 
     this.state = {
       beers: [],
-      currentPage: 1
+      currentPage: 1,
+      numberOfNewlyFetchedBeers: 0
     }
   }
 
@@ -39,6 +40,9 @@ class BeersList extends Component {
               beerDetails
             ]
           })
+        })
+        this.setState({
+          numberOfNewlyFetchedBeers: beers.length
         })
       })
 
@@ -70,7 +74,10 @@ class BeersList extends Component {
             )
           })}
         </ul>
-        <Button loadMoreResults={this.loadMoreResults}/>
+        {
+          this.state.numberOfNewlyFetchedBeers === 10 &&
+          <Button loadMoreResults={this.loadMoreResults}/>
+        }
       </Fragment>
     )
   }
