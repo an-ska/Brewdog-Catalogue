@@ -5,6 +5,9 @@ import Alert from '../../components/Alert';
 import Loader from '../../components/Loader';
 import Button from '../../components/Button';
 
+const punkApiUrl = 'https://api.punkapi.com/v2/beers'
+const resultsPerPage = 10;
+
 class BeersList extends Component {
   constructor(props) {
     super(props);
@@ -23,10 +26,11 @@ class BeersList extends Component {
   }
 
   getBeers() {
-    const apiUrl = `https://api.punkapi.com/v2/berereers?page=${this.state.pageToDisplay}&per_page=10`;
+    const apiUrl = `${punkApiUrl}?page=${this.state.pageToDisplay}&per_page=${resultsPerPage}`;
 
     this.setState({
       isLoading: true
+
     })
 
     fetch(apiUrl)
@@ -64,7 +68,7 @@ class BeersList extends Component {
       })
 
     this.setState({
-      pageToDisplay: this.state.pageToDisplay+ 1,
+      pageToDisplay: this.state.pageToDisplay + 1,
     })
   }
 
