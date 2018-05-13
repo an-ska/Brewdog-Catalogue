@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import './BeersList.scss';
-import Beer from '../../components/Beer';
+import BeerCard from '../../components/BeerCard';
 import Alert from '../../components/Alert';
 import Loader from '../../components/Loader';
 import Button from '../../components/Button';
@@ -30,32 +30,17 @@ class BeersList extends Component {
 
     this.setState({
       isLoading: true
-
     })
 
     fetch(apiUrl)
       .then(response => response.json())
       .then(beers => {
-        beers.map((beer) => {
-          const beerDetails = {
-            id: beer.id,
-            image : beer.image_url,
-            name : beer.name,
-            abv : beer.abv,
-            ibu: beer.ibu,
-            ebc: beer.ebc
-          }
-
-          this.setState({
-            beers: [
-              ...this.state.beers,
-              beerDetails
-            ],
-            isLoading: false
-          })
-        })
-
         this.setState({
+          beers: [
+            ...this.state.beers,
+            ...beers
+          ],
+          isLoading: false,
           numberOfNewlyFetchedBeers: beers.length
         })
       })
@@ -88,26 +73,36 @@ class BeersList extends Component {
             text='Results cannot be shown'
           />
         }
-        {
-          this.state.isLoading && <Loader />
-        }
         <ul>
           {this.state.beers.map((beer) => {
             return (
-              <Beer
-                key={beer.id}
+              <BeerCard
                 id={beer.id}
-                image={beer.image}
+                key={beer.id}
+                image={beer.image_url}
                 name={beer.name}
                 abv={beer.abv}
                 ibu={beer.ibu}
                 ebc={beer.ebc}
+                yeast={beer.ingredients.yeast}
+                description={beer.description}
+                food={beer.food_pairing}
               />
             )
           })}
         </ul>
         {
-          this.state.numberOfNewlyFetchedBeers === 10 && <Button loadMoreResults={this.loadMoreResults} />
+          this.state.isLoading
+          &&
+          <Loader text='...loading' />
+        }
+        {
+          this.state.numberOfNewlyFetchedBeers === 10
+          &&
+          <Button
+            handleClick={() => this.loadMoreResults()}
+            text='Load more'
+          />
         }
       </Fragment>
     )
