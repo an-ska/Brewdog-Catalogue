@@ -1,0 +1,41 @@
+.modal {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 310px;
+  max-width: 500px;
+  padding: 15px;
+  background: white;
+  z-index: 9999;
+  outline: 9999px solid rgba(0, 0, 0, .7);
+}
+
+.modalHeader {
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+
+.modalTitle {
+  padding-right: 15px;
+}
+
+.closeModal {
+  cursor: pointer;
+}
+
+.modalContent {
+  border-bottom: 1px solid #ccc;
+}
+
+.modalSubtitle {
+  padding: 20px 0 10px 0;
+  font-weight: bold;
+}
+
+.modalList {
+  padding: 0 0 20px 30px;
+}

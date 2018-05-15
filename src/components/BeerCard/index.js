@@ -31,6 +31,7 @@ class BeerCard extends Component {
           <img
             alt='Beer image'
             src={this.props.image}
+            className={styles.image}
           />
           <p>{this.props.name}</p>
           <p>{this.props.abv}</p>

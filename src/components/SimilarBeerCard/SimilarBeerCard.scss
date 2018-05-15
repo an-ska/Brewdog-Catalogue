@@ -1,0 +1,25 @@
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+
+.list {
+  list-style-type: none;
+}
+
+.subtitle {
+  padding: 5px 0;
+  font-weight: bold;
+}
+
+.image {
+  max-width: 180px;
+  height: 180px;
+  padding-left: 30px;
+}

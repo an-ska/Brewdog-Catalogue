@@ -50,8 +50,25 @@ class Modal extends Component {
 
   render() {
     return (
-      <div>
-        <i className="fas fa-times-circle" onClick={this.props.handleClick}></i>
+      <div className={styles.modal}>
+        <div className={styles.modalHeader}>
+          <h2 className={styles.modalTitle}>{this.props.name}</h2>
+          <i className={`${styles.closeModal} fas fa-lg fa-times-circle`} onClick={this.props.handleClick}></i>
+        </div>
+        <div className={styles.modalContent}>
+          <p className={styles.modalSubtitle}>Description:</p>
+          <p className={styles.text}>{this.props.description}</p>
+          <p className={styles.modalSubtitle}>Perfect to eat with:</p>
+          <ul className={styles.modalList}>
+            {
+              this.props.food.map((food, index) => (
+                  <li key={index}>{food}</li>
+                )
+              )
+            }
+          </ul>
+        </div>
+        <p className={styles.modalSubtitle}>Check also:</p>
         {
           this.state.hasError
           &&
@@ -60,17 +77,6 @@ class Modal extends Component {
             text='Results cannot be shown'
           />
         }
-        <p>{this.props.name}</p>
-        <p>{this.props.description}</p>
-        <ul>
-          {
-            this.props.food.map((food, index) => (
-                <li key={index}>{food}</li>
-              )
-            )
-          }
-        </ul>
-        <p>Check also:</p>
         {
           this.state.isLoading
           &&
@@ -83,6 +89,9 @@ class Modal extends Component {
               key={beer.id}
               image={beer.image_url}
               name={beer.name}
+              abv={beer.abv}
+              ibu={beer.ibu}
+              ebc={beer.ebc}
             />
           )
         )}
