@@ -4,8 +4,7 @@ import Alert from '../Alert';
 import Loader from '../Loader';
 import SimilarBeerCard from '../SimilarBeerCard';
 
-const punkApiUrl = 'https://api.punkapi.com/v2/beers'
-const resultsPerPage = 3;
+const punkApiUrl = 'https://api.punkapi.com/v2/beers/random'
 
 class Modal extends Component {
   constructor(props) {
@@ -23,8 +22,7 @@ class Modal extends Component {
   }
 
   getBeers() {
-    const apiUrl = `${punkApiUrl}?page=1&per_page=${resultsPerPage}&yeeast=${this.props.yeast}`;
-    console.log(this.props.yeast)
+    const apiUrl = punkApiUrl;
 
     this.setState({
       isLoading: true
@@ -72,6 +70,7 @@ class Modal extends Component {
             )
           }
         </ul>
+        <p>Check also:</p>
         {
           this.state.isLoading
           &&

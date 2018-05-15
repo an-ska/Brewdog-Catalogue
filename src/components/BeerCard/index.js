@@ -28,7 +28,10 @@ class BeerCard extends Component {
     return (
       <Fragment>
         <li id={this.props.id}>
-          <img alt='Beer image' src={this.props.image} />
+          <img
+            alt='Beer image'
+            src={this.props.image}
+          />
           <p>{this.props.name}</p>
           <p>{this.props.abv}</p>
           <p>{this.props.ibu}</p>
@@ -42,7 +45,10 @@ class BeerCard extends Component {
           this.state.showModal
           &&
           <Modal
-            className='openModal' name={this.props.name} description={this.props.description} yeast={this.props.yeast} food={this.props.food} handleClick={() => this.closeModal()}
+            name={this.props.name}
+            description={this.props.description}
+            food={this.props.food}
+            handleClick={() => this.closeModal()}
           />
         }
       </Fragment>
