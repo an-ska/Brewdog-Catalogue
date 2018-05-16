@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import './BeersList.scss';
+import styles from './BeersList.scss';
 import BeerCard from '../../components/BeerCard';
 import Alert from '../../components/Alert';
 import Loader from '../../components/Loader';
@@ -64,7 +64,7 @@ class BeersList extends Component {
   render() {
     return (
       <Fragment>
-        <h1>Brewdog Catalogue</h1>
+        <h1 className={styles.title}>Brewdog Catalogue</h1>
         {
           this.state.hasError
           &&
@@ -94,7 +94,7 @@ class BeersList extends Component {
         {
           this.state.isLoading
           &&
-          <Loader text='...loading' />
+          <Loader />
         }
         {
           this.state.numberOfNewlyFetchedBeers === 10

@@ -1,1 +1,53 @@
+.loader {
+  display: flex;
+  justify-content: center;
+}
 
+.fountainText {
+  color: #222;
+  font-size: 24px;
+  animation-name: bounce-fountainText;
+  animation-duration: 2.09s;
+  animation-iteration-count: infinite;
+  transform: scale(.5);
+}
+
+.fountainText1 {
+  animation-delay: 0.75s;
+}
+
+.fountainText2 {
+  animation-delay: 0.9s;
+}
+
+.fountainText3 {
+  animation-delay: 1.05s;
+}
+
+.fountainText4 {
+  animation-delay: 1.2s;
+}
+
+.fountainText5 {
+  animation-delay: 1.35s;
+}
+
+.fountainText6 {
+  animation-delay: 1.5s;
+}
+
+.fountainText7 {
+  animation-delay: 1.64s;
+}
+
+@keyframes bounce-fountainText {
+  0% {
+    transform: scale(1);
+    color: #222;
+  }
+
+  100% {
+    transform: scale(.5);
+  color: #FFF;
+  }
+}

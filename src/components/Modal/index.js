@@ -80,7 +80,7 @@ class Modal extends Component {
         {
           this.state.isLoading
           &&
-          <Loader text='...loading' />
+          <Loader />
         }
         {
           this.state.beers.map((beer) => (
