@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import styles from './BeersList.scss';
+import styles from './BeerList.scss';
 import BeerCard from '../../components/BeerCard';
 import Alert from '../../components/Alert';
 import Loader from '../../components/Loader';
@@ -8,7 +8,7 @@ import Button from '../../components/Button';
 const punkApiUrl = 'https://api.punkapi.com/v2/beers'
 const resultsPerPage = 10;
 
-class BeersList extends Component {
+class BeerList extends Component {
   constructor(props) {
     super(props);
 
@@ -109,4 +109,4 @@ class BeersList extends Component {
   }
 }
 
-export default BeersList;
+export default BeerList;

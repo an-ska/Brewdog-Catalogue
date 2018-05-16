@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './Modal.scss';
 import Alert from '../Alert';
 import Loader from '../Loader';
-import SimilarBeerCard from '../SimilarBeerCard';
+import RandomBeerCard from '../RandomBeerCard';
 
 const punkApiUrl = 'https://api.punkapi.com/v2/beers/random'
 
@@ -22,13 +22,11 @@ class Modal extends Component {
   }
 
   getBeers() {
-    const apiUrl = punkApiUrl;
-
     this.setState({
       isLoading: true
     })
 
-    fetch(apiUrl)
+    fetch(punkApiUrl)
       .then(response => response.json())
       .then(beers => {
         this.setState({
@@ -84,7 +82,7 @@ class Modal extends Component {
         }
         {
           this.state.beers.map((beer) => (
-            <SimilarBeerCard
+            <RandomBeerCard
               id={beer.id}
               key={beer.id}
               image={beer.image_url}
