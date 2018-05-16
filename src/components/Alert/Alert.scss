@@ -1,0 +1,27 @@
+$alertColor: #CE1126;
+
+.alert {
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+
+.alertIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px;
+  color: #FFF;
+  background: $alertColor;
+  border: 1px solid $alertColor;
+}
+
+.alertText {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  color: $alertColor;
+  background: #FFF;
+  border: 1px solid $alertColor;
+}
