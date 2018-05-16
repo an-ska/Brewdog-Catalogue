@@ -1,4 +1,27 @@
+$accentColor: #B8860B;
+
+.cardImage {
+  background: $accentColor;
+  padding: 25px;
+}
+
 .image {
   max-width: 250px;
   max-height: 250px;
+  display: block;
+  margin: 0 auto;
+}
+
+.cardContent {
+  padding: 15px;
+  border: 1px solid $accentColor;
+}
+
+.title {
+  padding: 0 0 15px;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-weight: bold;
 }

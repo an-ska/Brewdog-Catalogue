@@ -1,0 +1,14 @@
+.button {
+  display: block;
+  margin: 15px auto 0;
+  padding: 8px 45px;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: bold;
+  background: #0c70f7;
+  cursor: pointer;
+
+  &:hover {
+    background: darken(#0c70f7, 15%);
+  }
+}

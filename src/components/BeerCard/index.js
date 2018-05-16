@@ -28,20 +28,24 @@ class BeerCard extends Component {
     return (
       <Fragment>
         <li id={this.props.id}>
-          <img
-            alt='Beer image'
-            src={this.props.image}
-            className={styles.image}
-          />
-          <p>{this.props.name}</p>
-          <p>{this.props.abv}</p>
-          <p>{this.props.ibu}</p>
-          <p>{this.props.ebc}</p>
+          <div className={styles.cardImage}>
+            <img
+              alt='Beer image'
+              src={this.props.image}
+              className={styles.image}
+            />
+          </div>
+          <div className={styles.cardContent}>
+            <h2 className={styles.title}>{this.props.name}</h2>
+            <p><span className={styles.subtitle}>Alcohol By Volume:</span> {this.props.abv}</p>
+            <p><span className={styles.subtitle}>International Bitterness Unit:</span> {this.props.ibu}</p>
+            <p><span className={styles.subtitle}>European Brewery Convention:</span> {this.props.ebc}</p>
+            <Button
+              handleClick={() => this.openModal()}
+              text='Get more info'
+            />
+          </div>
         </li>
-        <Button
-          handleClick={() => this.openModal()}
-          text='More'
-        />
         {
           this.state.showModal
           &&

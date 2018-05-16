@@ -73,7 +73,7 @@ class BeersList extends Component {
             text='Results cannot be shown'
           />
         }
-        <ul>
+        <ul className={styles.container}>
           {this.state.beers.map((beer) => {
             return (
               <BeerCard
@@ -101,7 +101,7 @@ class BeersList extends Component {
           &&
           <Button
             handleClick={() => this.loadMoreResults()}
-            text='Load more'
+            text='Load more beers'
           />
         }
       </Fragment>
