@@ -27,7 +27,7 @@ class BeerCard extends Component {
   render() {
     return (
       <Fragment>
-        <li id={this.props.id}>
+        <li id={this.props.id} className={styles.card}>
           <div className={styles.cardImage}>
             <img
               alt='Beer image'

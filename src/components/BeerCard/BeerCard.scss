@@ -1,8 +1,13 @@
 $accentColor: #B8860B;
 
+.card {
+  border: 1px solid $accentColor;
+  background: #FFF;
+}
+
 .cardImage {
   background: $accentColor;
-  padding: 25px;
+  padding: 20px;
 }
 
 .image {
@@ -14,11 +19,11 @@ $accentColor: #B8860B;
 
 .cardContent {
   padding: 15px;
-  border: 1px solid $accentColor;
 }
 
 .title {
   padding: 0 0 15px;
+  font-size: 24px;
   font-weight: bold;
 }
 

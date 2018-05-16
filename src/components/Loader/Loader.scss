@@ -5,7 +5,7 @@
 }
 
 .fountainText {
-  color: #222;
+  color: #000;
   font-size: 24px;
   animation-name: bounce-fountainText;
   animation-duration: 2.09s;
@@ -44,11 +44,11 @@
 @keyframes bounce-fountainText {
   0% {
     transform: scale(1);
-    color: #222;
+    color: #000;
   }
 
   100% {
     transform: scale(.5);
-  color: #FFF;
+    color: #FFF;
   }
 }

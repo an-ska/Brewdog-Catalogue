@@ -1,5 +1,6 @@
 .title {
   margin: 15px 20px 45px;
+  font-size: 32px;
   text-align: center;
 }
 
@@ -9,5 +10,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 15px;
+  grid-auto-rows: 1fr;
   list-style-type: none;
 }
