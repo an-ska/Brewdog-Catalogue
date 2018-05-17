@@ -1,28 +1,28 @@
-$alertColor: #CE1126;
+$errorColor: #CE1126;
 
-.alert {
+.errorContainer {
   min-height: 40px;
   display: flex;
   justify-content: center;
   margin: 5px;
 }
 
-.alertIcon {
+.errorIcon {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0 15px;
   color: #FFF;
-  background: $alertColor;
-  border: 1px solid $alertColor;
+  background: $errorColor;
+  border: 1px solid $errorColor;
 }
 
-.alertText {
+.errorText {
   display: flex;
   align-items: center;
   padding: 0 15px;
-  color: $alertColor;
+  color: $errorColor;
   font-weight: bold;
   background: #FFF;
-  border: 1px solid $alertColor;
+  border: 1px solid $errorColor;
 }

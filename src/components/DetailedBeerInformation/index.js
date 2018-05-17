@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import styles from './Modal.scss';
-import Alert from '../Alert';
+import styles from './DetailedBeerInformation.scss';
+import ErrorMessage from '../ErrorMessage';
 import Loader from '../Loader';
-import RandomBeerCard from '../RandomBeerCard';
+import RandomBeer from '../RandomBeer';
 
-const punkApiUrl = 'https://api.punkapi.com/v2/beers/random'
+const randomBeerResource = 'https://api.punkapi.com/v2/beers/random'
 
-class Modal extends Component {
+class DetailedBeerInformation extends Component {
   constructor(props) {
     super(props);
 
@@ -26,7 +26,7 @@ class Modal extends Component {
       isLoading: true
     })
 
-    fetch(punkApiUrl)
+    fetch(randomBeerResource)
       .then(response => response.json())
       .then(beers => {
         this.setState({
@@ -48,16 +48,16 @@ class Modal extends Component {
 
   render() {
     return (
-      <div className={styles.modal}>
-        <div className={styles.modalHeader}>
-          <h2 className={styles.modalTitle}>{this.props.name}</h2>
-          <i className={`${styles.closeModal} fas fa-lg fa-times-circle`} onClick={this.props.handleClick}></i>
+      <div className={styles.detailedBeerContainer}>
+        <div className={styles.detailedBeerHeader}>
+          <h2 className={styles.detailedBeerTitle}>{this.props.name}</h2>
+          <i className={`${styles.detailedBeerCloseButton} fas fa-lg fa-times-circle`} onClick={this.props.handleClick}></i>
         </div>
-        <div className={styles.modalContent}>
-          <p className={styles.modalSubtitle}>Description:</p>
+        <div className={styles.detailedBeerContent}>
+          <p className={styles.detailedBeerSubtitle}>Description:</p>
           <p className={styles.text}>{this.props.description}</p>
-          <p className={styles.modalSubtitle}>Perfect to eat with:</p>
-          <ul className={styles.modalList}>
+          <p className={styles.detailedBeerSubtitle}>Perfect to eat with:</p>
+          <ul className={styles.detailedBeerList}>
             {
               this.props.dishes.map((dish, index) => (
                 <li key={index}>{dish}</li>
@@ -65,11 +65,11 @@ class Modal extends Component {
             }
           </ul>
         </div>
-        <p className={styles.modalSubtitle}>Check also:</p>
+        <p className={styles.detailedBeerSubtitle}>Check also:</p>
         {
           this.state.hasError
           &&
-          <Alert
+          <ErrorMessage
             icon='fa-exclamation-circle'
             text='Results cannot be shown'
           />
@@ -81,7 +81,7 @@ class Modal extends Component {
         }
         {
           this.state.beers.map((beer) => (
-            <RandomBeerCard
+            <RandomBeer
               id={beer.id}
               key={beer.id}
               image={beer.image_url}
@@ -97,4 +97,4 @@ class Modal extends Component {
   }
 }
 
-export default Modal;
+export default DetailedBeerInformation;

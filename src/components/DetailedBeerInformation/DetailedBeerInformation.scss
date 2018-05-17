@@ -1,6 +1,6 @@
 $accentColor: #B8860B;
 
-.modal {
+.detailedBeerContainer {
   position: fixed;
   top: 45vh;
   left: 50%;
@@ -17,30 +17,30 @@ $accentColor: #B8860B;
   overflow-y: scroll;
 }
 
-.modalHeader {
+.detailedBeerHeader {
   padding-bottom: 15px;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid $accentColor;
 }
 
-.modalTitle {
+.detailedBeerTitle {
   padding-right: 15px;
 }
 
-.closeModal {
+.detailedBeerCloseButton {
   cursor: pointer;
 }
 
-.modalContent {
+.detailedBeerContent {
   border-bottom: 1px solid $accentColor;
 }
 
-.modalSubtitle {
+.detailedBeerSubtitle {
   padding: 20px 0 10px 0;
   font-weight: bold;
 }
 
-.modalList {
+.detailedBeerList {
   padding: 0 0 20px 30px;
 }

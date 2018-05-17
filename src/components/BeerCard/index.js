@@ -1,59 +1,59 @@
 import React, { Component, Fragment } from 'react';
 import styles from './BeerCard.scss';
 import Button from '../Button';
-import Modal from '../Modal';
+import DetailedBeerInformation from '../DetailedBeerInformation';
 
 class BeerCard extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      showModal: false
+      showDetailedBeerInformation: false
     }
   }
 
-  openModal = () => {
+  openDetailedBeerInformation = () => {
     this.setState({
-      showModal: true
+      showDetailedBeerInformation: true
     })
   }
 
-  closeModal = () => {
+  closeDetailedBeerInformation = () => {
     this.setState({
-      showModal: false
+      showDetailedBeerInformation: false
     })
   }
 
   render() {
     return (
       <Fragment>
-        <li id={this.props.id} className={styles.card}>
-          <div className={styles.cardImage}>
+        <li id={this.props.id} className={styles.beerCardContainer}>
+          <div className={styles.beerCardImage}>
             <img
               alt='Beer image'
               src={this.props.image}
-              className={styles.image}
+              className={styles.beerImage}
             />
           </div>
-          <div className={styles.cardContent}>
-            <h2 className={styles.title}>{this.props.name}</h2>
-            <p><span className={styles.subtitle}>Alcohol By Volume:</span> {this.props.abv}</p>
-            <p><span className={styles.subtitle}>International Bitterness Unit:</span> {this.props.ibu}</p>
-            <p><span className={styles.subtitle}>European Brewery Convention:</span> {this.props.ebc}</p>
+          <div className={styles.beerCardContent}>
+            <h2 className={styles.beerCardTitle}>{this.props.name}</h2>
+            <p><span className={styles.beerCardSubtitle}>Alcohol By Volume:</span> {this.props.abv}</p>
+            <p><span className={styles.beerCardSubtitle}>International Bitterness Unit:</span> {this.props.ibu}</p>
+            <p><span className={styles.beerCardSubtitle}>European Brewery Convention:</span> {this.props.ebc}</p>
             <Button
-              handleClick={() => this.openModal()}
+              handleClick={() => this.openDetailedBeerInformation()}
               text='Get more info'
             />
           </div>
         </li>
         {
-          this.state.showModal
+          this.state.showDetailedBeerInformation
           &&
-          <Modal
+          <DetailedBeerInformation
             name={this.props.name}
             description={this.props.description}
             dishes={this.props.dishes}
-            handleClick={() => this.closeModal()}
+            handleClick={() => this.closeDetailedBeerInformation()}
           />
         }
       </Fragment>

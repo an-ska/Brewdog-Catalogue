@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './RandomBeerCard.scss';
+import styles from './RandomBeer.scss';
 
-const RandomBeerCard = ({ id, image, name, abv, ibu, ebc }) => (
+const RandomBeer = ({ id, image, name, abv, ibu, ebc }) => (
   <div id={id} className={styles.box}>
     <div>
       <h3 className={styles.title}>{name}</h3>
@@ -18,4 +18,4 @@ const RandomBeerCard = ({ id, image, name, abv, ibu, ebc }) => (
   </div>
 )
 
-export default RandomBeerCard;
+export default RandomBeer;

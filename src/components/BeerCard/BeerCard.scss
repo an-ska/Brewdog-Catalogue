@@ -1,33 +1,33 @@
 $accentColor: #B8860B;
 
-.card {
+.beerCardContainer {
   border: 1px solid $accentColor;
   background: #FFF;
 }
 
-.cardImage {
+.beerCardImage {
   height: 290px;
   padding: 20px;
   background: $accentColor;
 }
 
-.image {
+.beerImage {
   max-width: 250px;
   max-height: 250px;
   display: block;
   margin: 0 auto;
 }
 
-.cardContent {
+.beerCardContent {
   padding: 15px;
 }
 
-.title {
+.beerCardTitle {
   padding: 0 0 15px;
   font-size: 24px;
   font-weight: bold;
 }
 
-.subtitle {
+.beerCardSubtitle {
   font-weight: bold;
 }

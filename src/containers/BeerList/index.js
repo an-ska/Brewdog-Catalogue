@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import styles from './BeerList.scss';
 import BeerCard from '../../components/BeerCard';
-import Alert from '../../components/Alert';
+import ErrorMessage from '../../components/ErrorMessage';
 import Loader from '../../components/Loader';
 import Button from '../../components/Button';
 
@@ -57,7 +57,7 @@ class BeerList extends Component {
     })
   }
 
-  loadMoreResults = () => {
+  loadMoreBeers = () => {
     this.getBeers()
   }
 
@@ -68,12 +68,12 @@ class BeerList extends Component {
         {
           this.state.hasError
           &&
-          <Alert
+          <ErrorMessage
             icon='fa-exclamation-circle'
             text='Results cannot be shown'
           />
         }
-        <ul className={styles.container}>
+        <ul className={styles.beerCardsContainer}>
           {
             this.state.beers.map((beer) => (
               <BeerCard
@@ -99,7 +99,7 @@ class BeerList extends Component {
           this.state.numberOfNewlyFetchedBeers === 9
           &&
           <Button
-            handleClick={() => this.loadMoreResults()}
+            handleClick={() => this.loadMoreBeers()}
             text='Load mooore beers'
           />
         }
