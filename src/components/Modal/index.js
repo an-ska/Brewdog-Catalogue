@@ -59,10 +59,9 @@ class Modal extends Component {
           <p className={styles.modalSubtitle}>Perfect to eat with:</p>
           <ul className={styles.modalList}>
             {
-              this.props.food.map((food, index) => (
-                  <li key={index}>{food}</li>
-                )
-              )
+              this.props.dishes.map((dish, index) => (
+                <li key={index}>{dish}</li>
+              ))
             }
           </ul>
         </div>
@@ -91,8 +90,8 @@ class Modal extends Component {
               ibu={beer.ibu}
               ebc={beer.ebc}
             />
-          )
-        )}
+          ))
+        }
       </div>
     )
   }

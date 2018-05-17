@@ -74,8 +74,8 @@ class BeerList extends Component {
           />
         }
         <ul className={styles.container}>
-          {this.state.beers.map((beer) => {
-            return (
+          {
+            this.state.beers.map((beer) => (
               <BeerCard
                 id={beer.id}
                 key={beer.id}
@@ -84,12 +84,11 @@ class BeerList extends Component {
                 abv={beer.abv}
                 ibu={beer.ibu}
                 ebc={beer.ebc}
-                yeast={beer.ingredients.yeast}
                 description={beer.description}
-                food={beer.food_pairing}
+                dishes={beer.food_pairing}
               />
-            )
-          })}
+            ))
+          }
         </ul>
         {
           this.state.isLoading
@@ -101,7 +100,7 @@ class BeerList extends Component {
           &&
           <Button
             handleClick={() => this.loadMoreResults()}
-            text='Load more beers'
+            text='Load mooore beers'
           />
         }
       </Fragment>

@@ -52,7 +52,7 @@ class BeerCard extends Component {
           <Modal
             name={this.props.name}
             description={this.props.description}
-            food={this.props.food}
+            dishes={this.props.dishes}
             handleClick={() => this.closeModal()}
           />
         }
