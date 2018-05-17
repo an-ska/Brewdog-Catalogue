@@ -4,35 +4,34 @@ import ErrorMessage from '../ErrorMessage';
 import Loader from '../Loader';
 import RandomBeer from '../RandomBeer';
 
-const randomBeerResource = 'https://api.punkapi.com/v2/beers/random'
+const randomBeerResource = 'https://api.punkapi.com/v2/beers/random';
 
 class DetailedBeerInformation extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      beers: [],
       isLoading: false,
-      hasError: false
+      hasError: false,
+      beer: [],
     }
   }
 
   componentDidMount() {
-    this.getBeers();
+    this.getBeer();
   }
 
-  getBeers() {
+  getBeer() {
     this.setState({
       isLoading: true
     })
 
     fetch(randomBeerResource)
       .then(response => response.json())
-      .then(beers => {
+      .then(randomBeer => {
         this.setState({
-          beers: [
-            ...this.state.beers,
-            ...beers
+          beer: [
+            ...randomBeer
           ],
           isLoading: false
         })
@@ -80,7 +79,7 @@ class DetailedBeerInformation extends Component {
           <Loader />
         }
         {
-          this.state.beers.map((beer) => (
+          this.state.beer.map((beer) => (
             <RandomBeer
               id={beer.id}
               key={beer.id}
