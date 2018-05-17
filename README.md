@@ -1,7 +1,5 @@
 # Brewdog Catalogue App
 
-:construction:
-
 To open the project please run:
 
 * npm install
@@ -12,5 +10,5 @@ Used:
 
 * React.js
 * CSS Modules
-* Flexbox
+* Flexbox, CSS Grid
 * https://punkapi.com/documentation/v2
