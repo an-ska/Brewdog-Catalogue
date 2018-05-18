@@ -6,7 +6,7 @@ import Loader from '../../components/Loader';
 import Button from '../../components/Button';
 
 const punkApiUrl = 'https://api.punkapi.com/v2/beers'
-const resultsPerPage = 9;
+const beersPerPage = 9;
 
 class BeerList extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class BeerList extends Component {
   }
 
   getBeers() {
-    const apiUrl = `${punkApiUrl}?page=${this.state.pageToDisplay}&per_page=${resultsPerPage}`;
+    const apiUrl = `${punkApiUrl}?page=${this.state.pageToDisplay}&per_page=${beersPerPage}`;
 
     this.setState({
       isLoading: true
@@ -96,7 +96,7 @@ class BeerList extends Component {
           <Loader />
         }
         {
-          this.state.numberOfNewlyFetchedBeers === 9
+          this.state.numberOfNewlyFetchedBeers === beersPerPage
           &&
           <Button
             handleClick={() => this.loadMoreBeers()}
