@@ -46,19 +46,22 @@ class DetailedBeerInformation extends Component {
   }
 
   render() {
+    const { hasError, isLoading, beer } = this.state;
+    const { name, handleClick, description, dishes } = this.props;
+  
     return (
       <div className={styles.detailedBeerContainer}>
         <div className={styles.detailedBeerHeader}>
-          <h2 className={styles.detailedBeerTitle}>{this.props.name}</h2>
-          <i className={`${styles.detailedBeerCloseButton} fas fa-lg fa-times-circle`} onClick={this.props.handleClick}></i>
+          <h2 className={styles.detailedBeerTitle}>{name}</h2>
+          <i className={`${styles.detailedBeerCloseButton} fas fa-lg fa-times-circle`} onClick={handleClick}></i>
         </div>
         <div className={styles.detailedBeerContent}>
           <p className={styles.detailedBeerSubtitle}>Description:</p>
-          <p className={styles.text}>{this.props.description}</p>
+          <p className={styles.text}>{description}</p>
           <p className={styles.detailedBeerSubtitle}>Perfect to eat with:</p>
           <ul className={styles.detailedBeerList}>
             {
-              this.props.dishes.map((dish, index) => (
+              dishes.map((dish, index) => (
                 <li key={index}>{dish}</li>
               ))
             }
@@ -66,7 +69,7 @@ class DetailedBeerInformation extends Component {
         </div>
         <p className={styles.detailedBeerSubtitle}>Check also:</p>
         {
-          this.state.hasError
+          hasError
           &&
           <ErrorMessage
             icon='fa-exclamation-circle'
@@ -74,12 +77,12 @@ class DetailedBeerInformation extends Component {
           />
         }
         {
-          this.state.isLoading
+          isLoading
           &&
           <Loader />
         }
         {
-          this.state.beer.map((beer) => (
+          beer.map((beer) => (
             <RandomBeer
               id={beer.id}
               key={beer.id}

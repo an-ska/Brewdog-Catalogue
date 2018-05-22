@@ -12,36 +12,32 @@ class BeerCard extends Component {
     }
   }
 
-  openDetailedBeerInformation = () => {
+  toggleDetailedBeerInformation = () => {
     this.setState({
-      showDetailedBeerInformation: true
-    })
-  }
-
-  closeDetailedBeerInformation = () => {
-    this.setState({
-      showDetailedBeerInformation: false
+      showDetailedBeerInformation: !this.state.showDetailedBeerInformation
     })
   }
 
   render() {
+    const {id, image, name, abv, ibu, ebc } = this.props;
+
     return (
       <Fragment>
-        <li id={this.props.id} className={styles.beerCardContainer}>
+        <li id={id} className={styles.beerCardContainer}>
           <div className={styles.beerCardImage}>
             <img
               alt='Beer image'
-              src={this.props.image}
+              src={image}
               className={styles.beerImage}
             />
           </div>
           <div className={styles.beerCardContent}>
-            <h2 className={styles.beerCardTitle}>{this.props.name}</h2>
-            <p><span className={styles.beerCardSubtitle}>Alcohol By Volume:</span> {this.props.abv}</p>
-            <p><span className={styles.beerCardSubtitle}>International Bitterness Unit:</span> {this.props.ibu}</p>
-            <p><span className={styles.beerCardSubtitle}>European Brewery Convention:</span> {this.props.ebc}</p>
+            <h2 className={styles.beerCardTitle}>{name}</h2>
+            <p><span className={styles.beerCardSubtitle}>Alcohol By Volume:</span> {abv}</p>
+            <p><span className={styles.beerCardSubtitle}>International Bitterness Unit:</span> {ibu}</p>
+            <p><span className={styles.beerCardSubtitle}>European Brewery Convention:</span> {ebc}</p>
             <Button
-              handleClick={() => this.openDetailedBeerInformation()}
+              handleClick={() => this.toggleDetailedBeerInformation()}
               text='Get more info'
             />
           </div>
@@ -53,7 +49,7 @@ class BeerCard extends Component {
             name={this.props.name}
             description={this.props.description}
             dishes={this.props.dishes}
-            handleClick={() => this.closeDetailedBeerInformation()}
+            handleClick={() => this.toggleDetailedBeerInformation()}
           />
         }
       </Fragment>

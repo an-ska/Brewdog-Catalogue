@@ -41,6 +41,7 @@ class BeerList extends Component {
             ...beers
           ],
           isLoading: false,
+          pageToDisplay: this.state.pageToDisplay + 1,
           numberOfNewlyFetchedBeers: beers.length
         })
       })
@@ -51,22 +52,16 @@ class BeerList extends Component {
           isLoading: false,
         });
       })
-
-    this.setState({
-      pageToDisplay: this.state.pageToDisplay + 1,
-    })
-  }
-
-  loadMoreBeers = () => {
-    this.getBeers()
   }
 
   render() {
+    const { hasError, beers, isLoading, numberOfNewlyFetchedBeers } = this.state;
+  
     return (
       <Fragment>
         <h1 className={styles.title}>Brewdog Catalogue</h1>
         {
-          this.state.hasError
+          hasError
           &&
           <ErrorMessage
             icon='fa-exclamation-circle'
@@ -75,7 +70,7 @@ class BeerList extends Component {
         }
         <ul className={styles.beerCardsContainer}>
           {
-            this.state.beers.map((beer) => (
+            beers.map((beer) => (
               <BeerCard
                 id={beer.id}
                 key={beer.id}
@@ -91,15 +86,15 @@ class BeerList extends Component {
           }
         </ul>
         {
-          this.state.isLoading
+          isLoading
           &&
           <Loader />
         }
         {
-          this.state.numberOfNewlyFetchedBeers === beersPerPage
+          numberOfNewlyFetchedBeers === beersPerPage
           &&
           <Button
-            handleClick={() => this.loadMoreBeers()}
+            handleClick={() => this.getBeers()}
             text='Load mooore beers'
           />
         }
